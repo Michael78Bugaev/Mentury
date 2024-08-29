@@ -12,6 +12,7 @@ long_mode_start:
     mov fs, ax
     mov gs, ax
 
+    ;%include "./bootloader/ints.s"
     extern kmain
     call kmain
 

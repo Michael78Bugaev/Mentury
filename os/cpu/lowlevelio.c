@@ -1,4 +1,6 @@
 #include <cpu/io.h>
+#include <stdint.h>
+#include <stddef.h>
 
 unsigned char   port_byte_in(unsigned short port)
 {
@@ -27,10 +29,9 @@ void port_word_out(unsigned short port, unsigned short data)
     __asm__("out %%ax, %%dx" : : "a" (data), "d" (port));
 }
 
-void	memcpy(u8 *src, u8 *dest, u32 bytes)
+void memcopy(u8 *src, u8 *dest, u32 bytes)
 {
 	u32 i;
-
 	i = 0;
 	while (i < bytes)
 	{

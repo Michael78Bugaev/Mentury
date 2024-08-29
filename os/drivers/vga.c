@@ -1,6 +1,7 @@
 #include <drv/vga.h>
 #include <cpu/io.h>
 
+// offset = (row * VGA_WIDTH * 2) + (column * 2)
 
 void	kprint(u8 *str)
 {
@@ -51,7 +52,7 @@ void	scroll_line()
 
 	while (i < MAX_ROWS)
 	{
-		memcpy(
+		memcopy(
 			(u8 *)(VIDEO_ADDRESS + (MAX_COLS * i * 2)),
 			(u8 *)(VIDEO_ADDRESS + (MAX_COLS * (i-1) * 2)),
 			(MAX_COLS*2)
@@ -133,4 +134,10 @@ void    kprint_colored(u8 *str, u16 color)
 		putchar(*str, color);
 		str++;
 	}
+}
+void set_codepage_437() {
+    port_byte_out(REG_SCREEN_CTRL, 0x0F); // Set codepage
+    port_byte_out(REG_SCREEN_DATA, 0x01); // Codepage 437
+
+    port_byte_out(REG_SCREEN_CTRL, 0x0E); // Save changes
 }

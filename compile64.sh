@@ -11,6 +11,16 @@ gcc -m64 -c os/kernel.c -I ./include -o build/kernel.o
 # g++ -m64 -c os/tools.h -o build/tools_h.o
 gcc -m64 -c os/cpu/lowlevelio.c -I ./include -o build/lowlevelio.o
 gcc -m64 -c os/drivers/vga.c -I ./include -o build/vga.o
+gcc -m64 -c os/cpu/cpucall.c  -I ./include -o build/cpucall.o
+gcc -m64 -c os/cpu/string.c -I ./include -o build/string.o
+gcc -m64 -c os/general/shell.c -I ./include -o build/shell.o
+gcc -m64 -c os/drivers/keyboard.c -I ./include -o build/kb.o --std=c2x
+gcc -m64 -c os/general/cmos.c -I ./include -o build/cmos.o
+gcc -m64 -c os/cpu/memory.c -I ./include -o build/memory.o
+
+# gcc -m64 -c os/cpu/idt.c -I ./include -o build/idt.o
+
+# -fstack-protector -z muldefs
 
 ld -n -o build/kernel.bin \
     -T bootloader/linker.ld \
@@ -18,12 +28,16 @@ ld -n -o build/kernel.bin \
     build/boot.o \
     build/mode64.o \
     build/kernel.o \
+    build/cmos.o \
     build/lowlevelio.o \
+    build/cpucall.o \
     build/vga.o \
+    build/shell.o \
+    build/string.o \
+    build/kb.o \
+    build/memory.o \
 
-mkdir build/isofiles
-mkdir build/isofiles/boot
-mkdir build/isofiles/boot/grub/
+mkdir -p build/isofiles/boot/grub/
 
 cp config/grub.cfg build/isofiles/boot/grub/
 cp build/kernel.bin build/isofiles/boot/

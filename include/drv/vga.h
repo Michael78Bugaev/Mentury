@@ -3,7 +3,7 @@
 #define MAX_ROWS 25				// макс. строк
 #define MAX_COLS 80				// макс. столбцов
 
-#define WHITE_ON_BLACK 0x07  	// 0x0 == white fg, 0xf == black bg
+#define WHITE_ON_BLACK 0x0F  	// 0x0 == white fg, 0xf == black bg
 
 // Адреса I/O портов для взаимодействия с экраном.
 #define REG_SCREEN_CTRL 0x3d4	// этот порт для описания данных
@@ -17,3 +17,4 @@ void	scroll_line();
 u16		get_cursor();
 void	set_cursor(u16 pos);
 void    kprint_colored(u8 *str, u16 color);
+void set_codepage_437();
