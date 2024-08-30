@@ -17,6 +17,6 @@ sh compile64.sh
  - [x] VGA 80x25 driver
  - [x] Keyboard support (PS/2 and USB)
  - [x] Memory managment
- - [] Filesystem
- - [] Network support
- - [] File editor
+ - [ ] Filesystem
+ - [ ] Network support
+ - [ ] File editor
