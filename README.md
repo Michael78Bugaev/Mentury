@@ -14,9 +14,9 @@ sh compile64.sh
 ```
 ### Mentury possibilities
 
-[x] VGA 80x25 driver
-[x] Keyboard support (PS/2 and USB)
-[x] Memory managment
-[] Filesystem
-[] Network support
-[] File editor
+ - [x] VGA 80x25 driver
+ - [x] Keyboard support (PS/2 and USB)
+ - [x] Memory managment
+ - [] Filesystem
+ - [] Network support
+ - [] File editor
